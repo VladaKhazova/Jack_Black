@@ -1,0 +1,98 @@
+class Game {
+    field int Score1;
+    field int Score2;
+    field bool Player1End;
+    field bool Player2End;
+    field CardDeck Deck; 
+
+    constructor Game new() {
+        let Score1 = 0;
+        let Score2 = 0; 
+        let Player1End = false;
+        let Player2End = false;
+        let Deck = CardDeck.new();
+        return this;
+    }
+
+    method void Game() 
+    {
+        var int input;
+        var Card randomCard;
+        while (~Player1End)
+        {
+            let input = Keyboard.readInt("take new card by '0' or end by '1'");
+
+            if (input = 0)
+            {
+                let randomCard = Deck.getNextCard();
+
+                let Score1 = Score1 + randomCard.getNum() + 6;
+                do Screen.clearScreen();
+                do randomCard.DisplayCard();
+                if (Score1 > 21)
+                {
+                    let Player1End = true;
+                }
+            }
+            if (input = 1) 
+            {
+                let Player1End = true;
+            }
+        }
+
+        do Screen.clearScreen();
+
+        do Sys.wait(5000);
+
+        while (~Player2End)
+        {
+            let input = Keyboard.readInt("take new card by '0' or end by '1'");
+
+            if (input = 0)
+            {
+                let randomCard = Deck.getNextCard();
+                
+                let Score2 = Score2 + randomCard.getNum() + 6;
+                do Screen.clearScreen();
+                do randomCard.DisplayCard();
+                if (Score2 > 21)
+                {
+                    let Player2End = true;
+                }
+            }
+            if (input = 1) 
+            {
+                let Player2End = true;
+            }
+        }
+       if (Score1 > 21 & Score2 > 21)
+        {
+            do Output.printString("All lose! Thanks for the game :)");
+            return;
+        }
+        if (Score1 > 21)
+        {
+            do Output.printString("Player2 wins! Thanks for the game :)");
+            return;
+        }
+        if (Score2 > 21)
+        {
+            do Output.printString("Player1 wins! Thanks for the game :)");
+            return;
+        }
+        if (Score1 > Score2)
+        {
+            do Output.printString("Player1 wins! Thanks for the game :)");
+        }
+        if (Score2 > Score1)
+        {
+            do Output.printString("Player2 wins! Thanks for the game :)");
+        }
+        if (Score2 = Score1)
+        {
+            do Output.printString("Draw! Thanks for the game :)");
+        }
+
+        return;
+    }
+}

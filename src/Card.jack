@@ -1,0 +1,98 @@
+class Card{    
+    /*Nums:
+    11 - jack
+    12 - queen
+    13 - king
+    14 - ace
+    */
+
+    /*suits:
+    0 - hearts
+    1 - spades
+    2 - cross
+    3 - diamonds
+    */
+
+    field int Num, Suit;
+
+    constructor Card new(int num, int suit) {
+        let Num = num;
+        let Suit = suit;
+        return this;
+    }
+
+    method int getNum(){
+        return Num;
+    }
+
+    method int getSuit(){
+        return Suit;
+    }
+
+    method void DisplayCard () {
+         var int borderLocation;
+         var int numLocation;
+         var int suitLocation;
+         do Draw.border(0);
+         if (Num = 0)
+         {
+            do Draw.six(641);
+         }
+         if (Num = 1)
+         {
+            do Draw.seven(641);
+         }
+         if (Num = 2)
+         {
+            do Draw.eight(641);
+         }
+         if (Num = 3)
+         {
+            do Draw.nine(641);
+         }
+         if (Num = 4)
+         {
+            do Draw.ten(641);
+         }
+         if (Num = 5)
+         {
+            do Draw.jack(641);
+         }
+         if (Num = 6)
+         {
+            do Draw.queen(641);
+         }
+         if (Num = 7)
+         {
+            do Draw.king(641);
+         }
+         if (Num = 8)
+         {
+            do Draw.ace(641);
+         }
+         if (Suit = 0)
+         {
+            do Draw.hearts(2369);
+         }
+         if (Suit = 1)
+         {
+            do Draw.spades(2369);
+         }
+         if (Suit = 2)
+         {
+            do Draw.cross(2369);
+         }
+         if (Suit = 3)
+         {
+            do Draw.diamonds(2369);
+         }
+         do Sys.wait(2000);
+         do Screen.clearScreen();
+         return;
+    }
+
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+    }
+}

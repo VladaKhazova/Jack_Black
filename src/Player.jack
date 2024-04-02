@@ -1,0 +1,38 @@
+class Player {
+    /*suits:
+    0 - hearts
+    1 - spades
+    2 - clubs
+    3 - diamonds
+    */
+
+    field int Score;
+    field bool IsEnd;
+
+    constructor Player new(){
+        let Score = 0;
+        let IsEnd = false;
+        return this;
+    }
+
+    method void SetScore(int score)
+    {
+        let Score = score;
+        return;
+    }
+
+    method bool GetState()
+    {
+        return IsEnd;
+    }
+
+    method int GetScore() 
+    {
+        return Score;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
